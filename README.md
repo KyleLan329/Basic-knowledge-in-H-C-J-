@@ -1,7 +1,7 @@
 # Basic-knowledge-in-H-C-J-
 Collect basic knowledge that is easily ignored in HTML/CSS/Javascript
 
-##HTML/CSS
+## HTML/CSS
 
 (1)
 常用的页面的图片格式有三种，GIF、JPG、PNG。 GIF 意为Graphics Interchange format（图形交换格式）； JPEG 代表Joint Photograhic Experts Group（联合图像专家组），这种格式经常写成JPG，JPG图片的扩展名为jpg；流式网络图形格式(Portable Network Graphic Format，PNG)名称来源于非官方的“PNG's Not GIF”，是一种位图文件(bitmap file)存储格式，读成“ping”。PNG用来存储灰度图像时，灰度图像的深度可多到16位，存储彩色图像时，彩色图像的深度可多到48位，并且还可存储多到16位的α通道数据。
@@ -14,7 +14,7 @@ Collect basic knowledge that is easily ignored in HTML/CSS/Javascript
 (3)bootstrap3支持: IOS 与 Android 上的opera浏览器
 
 
-##JavaScript
+## JavaScript
 
 （1）
 $.post(url)是ajax请求；
@@ -32,4 +32,22 @@ Yahoo! User Interface  库  (YUI)  包含一个  bucketload 。
 和  YUI  一样， ExtJS  包含大量开箱即用的组件，其中有很多功能强大的网格控件，支持内联编辑、分页、筛选、分组、汇总、缓冲和数据绑定。
 MooTools  和  Prototype 、 jQuery  不包含开箱即用的  UI  控件和小部件.
 
+(3)
+JavaScript中的保留字：别用它们来命名！！
+abstract
+boolean break byte
+case catch char class const continue
+debugger default delete do double
+else enum export extends
+false final finally float for function
+goto
+if implements import in instanceof int interface
+long
+native new null
+package private protected public
+return
+short static super switch synchronized
+this throw throws transient true try typeof
+var void volatile
+while with
 
