@@ -14,7 +14,6 @@ Collect basic knowledge that is easily ignored in HTML/CSS/Javascript
 (3)bootstrap3支持: IOS 与 Android 上的opera浏览器
 
 (4)
-
 H5新增标签：
 article: 标签定义外部的内容。
 aside:标签定义 article 以外的内容。a
@@ -62,37 +61,24 @@ CSS权威指南中的解释：
 我们认为，正常流中的大多数元素都会足够高以包含其后代元素（包括外边距），如果一个元素的上下外边距时父元素的height的百分数，就可能导致一个无限循环，父元素的height会增加，以适应后代元素上下外边距的增加，而相应的，上下外边距因为父元素height的增加也会增加，如果循环。
 
 (7)
-
 display: none和visibility:hidden的区别就是visibility:hidden会保留元素的空间
-
 repaint(重绘) ，repaint发生更改时，元素的外观被改变，且在没有改变布局的情况下发生，如改变outline,visibility,background color，不会影响到dom结构渲染。
-
 reflow(渲染)，与repaint区别就是他会影响到dom的结构渲染，同时他会触发repaint，他会改变他本身与所有父辈元素(祖先)，这种开销是非常昂贵的，导致性能下降是必然的，页面元素越多效果越明显。
-
 所以display:none才会产生reflow
-
 visibility:hidden只会出发repaint
 
 (8)
 在网页中嵌入多媒体，如电影，声音等用到的标记是:
-
 <embed> 标签是 HTML 5 中的新标签。
-
 浏览器支持
-
 所有主流浏览器都支持 <embed> 标签。
-
 定义及使用说明
-
 <embed> 标签定义了一个容器，用来嵌入外部应用或者互动程序（插件）。
-
 实例
-
 被嵌入的 flash 动画片：
+  <embed src="helloworld.swf">
 
-<embed src="helloworld.swf">
-
-(9) 单元格垂直合并所用的属性是Rowspan ；单元格横向合并所用的属性是  Colspan
+(9)单元格垂直合并所用的属性是Rowspan ；单元格横向合并所用的属性是  Colspan
 
 (10) HTML技术中使文字滚动的方法是使用双标签<marquee></marquee>。在HTML代码中可使其作用区文字滚动，默认为从右到左，循环滚动。 <marquee direction="left">default scroll direction</marquee>
 
@@ -102,11 +88,11 @@ visibility:hidden只会出发repaint
 
 (12)
 请阅读以下代码：
-<div style=”width:400px;height:200px;”>
-  <span style=”float:left;width:auto;height:100%;”>
-           <i style=”position:absolute;float:left;width:100px;height:50px;”>hello</i>
-  </span>
-</div>
+  <div style=”width:400px;height:200px;”>
+    <span style=”float:left;width:auto;height:100%;”>
+             <i style=”position:absolute;float:left;width:100px;height:50px;”>hello</i>
+    </span>
+  </div>
 问题：span标签的width和height分别为多少？
 width = 0px，height = 200px
 首先span不是块级元素，是不支持宽高的，但是style中有了个float：left；就使得span变成了块级元素支持宽高，height:100%;即为，200，宽度由内容撑开。
@@ -154,17 +140,16 @@ while with
 (4)Flash提供了ExternalInterface接口与JavaScript通信，ExternalInterface有两个方法，call和addCallback，call的作用是让Flash调用js里的方法，addCallback是用来注册flash函数让js调用。
 
 (5)
+  console.log(Number(""));           //0
+  console.log(Number(null));         //0
+  console.log(Number(undefined));    //NaN
 
-console.log(Number(""));           //0
-console.log(Number(null));         //0
-console.log(Number(undefined));    //NaN
+  console.log(parseInt(""));        //NaN
+  console.log(parseInt(null));      //NaN
+  console.log(parseInt(undefined)); //NaN
 
-console.log(parseInt(""));        //NaN
-console.log(parseInt(null));      //NaN
-console.log(parseInt(undefined)); //NaN
-
-console.log(null == 0); //false
-console.log(undefined == 0); //false
+  console.log(null == 0); //false
+  console.log(undefined == 0); //false
 
 (6) 如果需要匹配包含文本的元素，用下面哪种方法来实现？
 
@@ -197,23 +182,23 @@ Object           "object"
 当在 HTML 页面中执行脚本时，页面的状态是不可响应的，直到脚本已完成。 web worker 是运行在后台的 JavaScript，独立于其他脚本，不会影响页面的性能。您可以继续做任何愿意做的事情：点击、选取内容等等，而此时 web worker 在后台运行。
 
 (11)
-function test(){
-  var n = 4399;
+  function test(){
+    var n = 4399;
 
-  function add(){
-    n++;
-    console.log(n);
+    function add(){
+      n++;
+      console.log(n);
+    }
+
+    return {n:n, add:add}
   }
 
-  return {n:n, add:add}
-}
-
-var result = test();
-var result2 = test();
-result.add(); //4400
-result.add(); //4401
-console.log(result.n) //4399;
-result2.add(); //4400
+  var result = test();
+  var result2 = test();
+  result.add(); //4400
+  result.add(); //4401
+  console.log(result.n) //4399;
+  result2.add(); //4400
 
 首先，题中定义了一个函数，名为test，这个函数内部分别又定义了一个数值变量n和一个闭包函数add，test函数的最后一行代码return{n:n,add:add}，实际上是返回了一个object，而这个object中有一个属性n，它的值是n，还有一个方法add，它的值是add。
 好了，函数解释清楚，再来看输出的问题。函数外部分别定义了两个变量，result和result2，他们都指向test函数，但是分属两个不同的作用域，这也就解释了答案中1和4,4不会在2的基础上继续n++。
@@ -221,13 +206,13 @@ result2.add(); //4400
 答案3是比较令人困惑的一项，追本溯源，前面提到过第6行代码返回了一个有着值为n的属性n和值为add的方法add的匿名对象，在这里，在这个匿名对象中，属性n和方法add是互不相关的，即使在闭包add中改变了变量n的值，result.n的值依然不变。
 
 (12)
-var bb = 1;
-function aa(bb) {
-    bb = 2;
-    alert(bb);
-};
-aa(bb); //2
-alert(bb); //1
+  var bb = 1;
+  function aa(bb) {
+      bb = 2;
+      alert(bb);
+  };
+  aa(bb); //2
+  alert(bb); //1
 
 记住一句话就好了：“ECMA中所有函数的参数都是按值传递的”。
 值传递：把把一个值类型（也叫基本类型）传递给另一个变量时，其实是分配了一块新的存储空间，因此就本题来说，在内部改变这个值时，其实在函数外部对这个值没有影响。
@@ -252,51 +237,51 @@ CMD 是 SeaJS 在推广过程中对模块定义的规范化产出。
 1. 对于依赖的模块，AMD 是提前执行，CMD 是延迟执行。
 2. CMD 推崇依赖就近，AMD 推崇依赖前置。
 // CMD
-define(function(require, exports, module) {
-var a = require('./a')
-a.doSomething()
-// 此处略去 100 行
-var b = require('./b') // 依赖可以就近书写
-b.doSomething()
-// ...
-})
+  define(function(require, exports, module) {
+  var a = require('./a')
+  a.doSomething()
+  // 此处略去 100 行
+  var b = require('./b') // 依赖可以就近书写
+  b.doSomething()
+  // ...
+  })
 
-// AMD 默认推荐的是
-define(['./a', './b'], function(a, b) { // 依赖必须一开始就写好
-a.doSomething()
-// 此处略去 100 行
-b.doSomething()
-...
-})
+  // AMD 默认推荐的是
+  define(['./a', './b'], function(a, b) { // 依赖必须一开始就写好
+  a.doSomething()
+  // 此处略去 100 行
+  b.doSomething()
+  ...
+  })
 
 (15) 只要 协议 、 域名 、 端口 有任何一个 不同, 都被当作是 不同 的域。
 
 (16)
 all（）方法和apply（）方法的作用相同，他们的区别在于接收参数的方式不同。对于call（），第一个参数是this值没有变化，变化的是其余参数都直接传递给函数。（在使用call（）方法时，传递给函数的参数必须逐个列举出来。使用apply（）时，传递给函数的是参数数组）如下代码做出解释：
 
-function add(c, d){
+  function add(c, d){
 
-return this.a + this.b + c + d;
+  return this.a + this.b + c + d;
 
-}
+  }
 
-var o = {a:1, b:3};
-add.call(o, 5, 7); // 1 + 3 + 5 + 7 = 16
-add.apply(o, [10, 20]); // 1 + 3 + 10 + 20 = 34
+  var o = {a:1, b:3};
+  add.call(o, 5, 7); // 1 + 3 + 5 + 7 = 16
+  add.apply(o, [10, 20]); // 1 + 3 + 10 + 20 = 34
 
 (17)
 
 下列代码，页面打开后能够弹出alert(1)的是
 
-<iframe src=”javascript: alert(1)”></iframe> //页面加载时触发
+  <iframe src=”javascript: alert(1)”></iframe> //页面加载时触发
 
 
-<img src=”” onerror=”alert(1)”/> //图片载入失败时触发
+  <img src=”” onerror=”alert(1)”/> //图片载入失败时触发
 
 
-IE下<s style=”top:expression(alert(1))”></s>  // 在ie 7下会连续弹出， IE5及其以后版本支持在CSS中使用expression，用来把CSS属性和Javascript表达式关联起来，这里的CSS属性可以是元素固有的属性，也可以是自定义属性。就是说CSS属性后面可以是一段Javascript表达式，CSS属性的值等于Javascript表达式计算的结果。 在表达式中可以直接引用元素自身的属性和方法，也可以使用其他浏览器对象。这个表达式就好像是在这个元素的一个成员函数中一样。参考资料 http://www.blueidea.com/tech/site/2006/3705.asp
+  IE下<s style=”top:expression(alert(1))”></s>  // 在ie 7下会连续弹出， IE5及其以后版本支持在CSS中使用expression，用来把CSS属性和Javascript表达式关联起来，这里的CSS属性可以是元素固有的属性，也可以是自定义属性。就是说CSS属性后面可以是一段Javascript表达式，CSS属性的值等于Javascript表达式计算的结果。 在表达式中可以直接引用元素自身的属性和方法，也可以使用其他浏览器对象。这个表达式就好像是在这个元素的一个成员函数中一样。参考资料 http://www.blueidea.com/tech/site/2006/3705.asp
 
-<div onclick=”alert(1)”></div>  // 不可以,因为div里没有内容，盒子的宽度为0所以点击不了
+  <div onclick=”alert(1)”></div>  // 不可以,因为div里没有内容，盒子的宽度为0所以点击不了
 
 
 
