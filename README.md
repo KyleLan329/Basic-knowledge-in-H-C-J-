@@ -44,10 +44,10 @@ time:定义日期或时间。
 video：h5新增视频标签。具有高宽属性。
 
 (5)
-<pre>定义预格式文本，保持文本原有的格式
-<meta> 元素可提供有关页面的元信息（meta-information），比如针对搜索引擎和更新频度的描述和关键词。
-<meta> 标签位于文档的头部，不包含任何内容。
-<meta> 标签的属性定义了与文档相关联的名称/值对。
+  <pre>定义预格式文本，保持文本原有的格式
+  <meta> 元素可提供有关页面的元信息（meta-information），比如针对搜索引擎和更新频度的描述和关键词。
+  <meta> 标签位于文档的头部，不包含任何内容。
+  <meta> 标签的属性定义了与文档相关联的名称/值对。
 
 (6)
 可以对元素的margin设置百分数，百分数是相对于父元素的width计算，不管是margin-top/margin-bottom还是margin-left/margin-right。（padding同理）
