@@ -45,10 +45,10 @@ video：h5新增视频标签。具有高宽属性。
 
 (5)
 
-  \\pre定义预格式文本，保持文本原有的格式
-  \\<meta> 元素可提供有关页面的元信息（meta-information），比如针对搜索引擎和更新频度的描述和关键词。
-  \\<meta> 标签位于文档的头部，不包含任何内容。
-  \\<meta> 标签的属性定义了与文档相关联的名称/值对。
+      <pre>定义预格式文本，保持文本原有的格式
+      <meta> 元素可提供有关页面的元信息（meta-information），比如针对搜索引擎和更新频度的描述和关键词。
+      <meta> 标签位于文档的头部，不包含任何内容。
+      <meta> 标签的属性定义了与文档相关联的名称/值对。
 
 (6)
 可以对元素的margin设置百分数，百分数是相对于父元素的width计算，不管是margin-top/margin-bottom还是margin-left/margin-right。（padding同理）
@@ -69,19 +69,24 @@ reflow(渲染)，与repaint区别就是他会影响到dom的结构渲染，同�
 visibility:hidden只会出发repaint
 
 (8)
-在网页中嵌入多媒体，如电影，声音等用到的标记是:
-<embed> 标签是 HTML 5 中的新标签。
-浏览器支持
-所有主流浏览器都支持 <embed> 标签。
-定义及使用说明
-<embed> 标签定义了一个容器，用来嵌入外部应用或者互动程序（插件）。
-实例
-被嵌入的 flash 动画片：
-  <embed src="helloworld.swf">
+
+    在网页中嵌入多媒体，如电影，声音等用到的标记是:
+    <embed> 标签是 HTML 5 中的新标签。
+    浏览器支持
+    所有主流浏览器都支持 <embed> 标签。
+    定义及使用说明
+    <embed> 标签定义了一个容器，用来嵌入外部应用或者互动程序（插件）。
+    实例
+    被嵌入的 flash 动画片：
+      <embed src="helloworld.swf">
+
 
 (9)单元格垂直合并所用的属性是Rowspan ；单元格横向合并所用的属性是  Colspan
 
-(10) HTML技术中使文字滚动的方法是使用双标签<marquee></marquee>。在HTML代码中可使其作用区文字滚动，默认为从右到左，循环滚动。 <marquee direction="left">default scroll direction</marquee>
+(10)
+    
+     HTML技术中使文字滚动的方法是使用双标签<marquee></marquee>。在HTML代码中可使其作用区文字滚动，默认为从右到左，循环滚动。 <marquee direction="left">default scroll direction</marquee>
+    
 
 (11) 在使用table表现数据时，有时候表现出来的会比自己实际设置的宽度要宽，为此需要设置下面哪些属性值？
 - 单元格边距(表格填充)(cellpadding) -- 代表单元格外面的一个距离,用于隔开单元格与单元格空间单；
@@ -89,11 +94,13 @@ visibility:hidden只会出发repaint
 
 (12)
 请阅读以下代码：
-  <div style=”width:400px;height:200px;”>
+    
+      <div style=”width:400px;height:200px;”>
     <span style=”float:left;width:auto;height:100%;”>
-             <i style=”position:absolute;float:left;width:100px;height:50px;”>hello</i>
+     <i style=”position:absolute;float:left;width:100px;height:50px;”>hello</i>
     </span>
-  </div>
+      </div>
+
 问题：span标签的width和height分别为多少？
 width = 0px，height = 200px
 首先span不是块级元素，是不支持宽高的，但是style中有了个float：left；就使得span变成了块级元素支持宽高，height:100%;即为，200，宽度由内容撑开。
@@ -183,23 +190,25 @@ Object           "object"
 当在 HTML 页面中执行脚本时，页面的状态是不可响应的，直到脚本已完成。 web worker 是运行在后台的 JavaScript，独立于其他脚本，不会影响页面的性能。您可以继续做任何愿意做的事情：点击、选取内容等等，而此时 web worker 在后台运行。
 
 (11)
-  function test(){
+    
+    	function test(){
     var n = 4399;
-
+    
     function add(){
       n++;
       console.log(n);
     }
-
+    
     return {n:n, add:add}
-  }
+     	 }
+    
+      var result = test();
+      var result2 = test();
+      result.add(); //4400
+      result.add(); //4401
+      console.log(result.n) //4399;
+      result2.add(); //4400
 
-  var result = test();
-  var result2 = test();
-  result.add(); //4400
-  result.add(); //4401
-  console.log(result.n) //4399;
-  result2.add(); //4400
 
 首先，题中定义了一个函数，名为test，这个函数内部分别又定义了一个数值变量n和一个闭包函数add，test函数的最后一行代码return{n:n,add:add}，实际上是返回了一个object，而这个object中有一个属性n，它的值是n，还有一个方法add，它的值是add。
 好了，函数解释清楚，再来看输出的问题。函数外部分别定义了两个变量，result和result2，他们都指向test函数，但是分属两个不同的作用域，这也就解释了答案中1和4,4不会在2的基础上继续n++。
@@ -207,13 +216,14 @@ Object           "object"
 答案3是比较令人困惑的一项，追本溯源，前面提到过第6行代码返回了一个有着值为n的属性n和值为add的方法add的匿名对象，在这里，在这个匿名对象中，属性n和方法add是互不相关的，即使在闭包add中改变了变量n的值，result.n的值依然不变。
 
 (12)
-  var bb = 1;
-  function aa(bb) {
-      bb = 2;
-      alert(bb);
-  };
-  aa(bb); //2
-  alert(bb); //1
+
+	  var bb = 1;
+	  function aa(bb) {
+	      bb = 2;
+	      alert(bb);
+	  };
+	  aa(bb); //2
+	  alert(bb); //1
 
 记住一句话就好了：“ECMA中所有函数的参数都是按值传递的”。
 值传递：把把一个值类型（也叫基本类型）传递给另一个变量时，其实是分配了一块新的存储空间，因此就本题来说，在内部改变这个值时，其实在函数外部对这个值没有影响。
@@ -232,57 +242,58 @@ AMD也采用require()语句加载模块，但是不同于CommonJS。
 主要有两个Javascript库实现了AMD规范：require.js和curl.js。
 参考链接：http://www.ruanyifeng.com/blog/2012/10/asynchronous_module_definition.html
 
-AMD 是 RequireJS 在推广过程中对模块定义的规范化产出。
-CMD 是 SeaJS 在推广过程中对模块定义的规范化产出。
-区别：
-1. 对于依赖的模块，AMD 是提前执行，CMD 是延迟执行。
-2. CMD 推崇依赖就近，AMD 推崇依赖前置。
-// CMD
-  define(function(require, exports, module) {
-  var a = require('./a')
-  a.doSomething()
-  // 此处略去 100 行
-  var b = require('./b') // 依赖可以就近书写
-  b.doSomething()
-  // ...
-  })
-
-  // AMD 默认推荐的是
-  define(['./a', './b'], function(a, b) { // 依赖必须一开始就写好
-  a.doSomething()
-  // 此处略去 100 行
-  b.doSomething()
-  ...
-  })
+    AMD 是 RequireJS 在推广过程中对模块定义的规范化产出。
+    CMD 是 SeaJS 在推广过程中对模块定义的规范化产出。
+    区别：
+    1. 对于依赖的模块，AMD 是提前执行，CMD 是延迟执行。
+    2. CMD 推崇依赖就近，AMD 推崇依赖前置。
+    // CMD
+      define(function(require, exports, module) {
+      var a = require('./a')
+      a.doSomething()
+      // 此处略去 100 行
+      var b = require('./b') // 依赖可以就近书写
+      b.doSomething()
+      // ...
+      })
+    
+      // AMD 默认推荐的是
+      define(['./a', './b'], function(a, b) { // 依赖必须一开始就写好
+      a.doSomething()
+      // 此处略去 100 行
+      b.doSomething()
+      ...
+      })
 
 (15) 只要 协议 、 域名 、 端口 有任何一个 不同, 都被当作是 不同 的域。
 
 (16)
 all（）方法和apply（）方法的作用相同，他们的区别在于接收参数的方式不同。对于call（），第一个参数是this值没有变化，变化的是其余参数都直接传递给函数。（在使用call（）方法时，传递给函数的参数必须逐个列举出来。使用apply（）时，传递给函数的是参数数组）如下代码做出解释：
-
-  function add(c, d){
-
-  return this.a + this.b + c + d;
-
-  }
-
-  var o = {a:1, b:3};
-  add.call(o, 5, 7); // 1 + 3 + 5 + 7 = 16
-  add.apply(o, [10, 20]); // 1 + 3 + 10 + 20 = 34
+    
+      function add(c, d){
+    
+      return this.a + this.b + c + d;
+    
+      }
+    
+      var o = {a:1, b:3};
+      add.call(o, 5, 7); // 1 + 3 + 5 + 7 = 16
+      add.apply(o, [10, 20]); // 1 + 3 + 10 + 20 = 34
 
 (17)
 
-下列代码，页面打开后能够弹出alert(1)的是
+    下列代码，页面打开后能够弹出alert(1)的是
+    
+      <iframe src=”javascript: alert(1)”></iframe> //页面加载时触发
+    
+    
+      <img src=”” onerror=”alert(1)”/> //图片载入失败时触发
+    
+    
+      IE下<s style=”top:expression(alert(1))”></s>  // 在ie 7下会连续弹出， IE5及其以后版本支持在CSS中使用expression，用来把CSS属性和Javascript表达式关联起来，这里的CSS属性可以是元素固有的属性，也可以是自定义属性。就是说CSS属性后面可以是一段Javascript表达式，CSS属性的值等于Javascript表达式计算的结果。 在表达式中可以直接引用元素自身的属性和方法，也可以使用其他浏览器对象。这个表达式就好像是在这个元素的一个成员函数中一样。参考资料 http://www.blueidea.com/tech/site/2006/3705.asp
+    
+      <div onclick=”alert(1)”></div>  // 不可以,因为div里没有内容，盒子的宽度为0所以点击不了
 
-  <iframe src=”javascript: alert(1)”></iframe> //页面加载时触发
-
-
-  <img src=”” onerror=”alert(1)”/> //图片载入失败时触发
-
-
-  IE下<s style=”top:expression(alert(1))”></s>  // 在ie 7下会连续弹出， IE5及其以后版本支持在CSS中使用expression，用来把CSS属性和Javascript表达式关联起来，这里的CSS属性可以是元素固有的属性，也可以是自定义属性。就是说CSS属性后面可以是一段Javascript表达式，CSS属性的值等于Javascript表达式计算的结果。 在表达式中可以直接引用元素自身的属性和方法，也可以使用其他浏览器对象。这个表达式就好像是在这个元素的一个成员函数中一样。参考资料 http://www.blueidea.com/tech/site/2006/3705.asp
-
-  <div onclick=”alert(1)”></div>  // 不可以,因为div里没有内容，盒子的宽度为0所以点击不了
 
 
 
