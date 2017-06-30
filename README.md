@@ -340,4 +340,6 @@ D、import readFile 没加括号，是导入 default 的用法，但是前面不
     import defaultMember, { member [ , [...] ] } from "module-name";
     import defaultMember, * as name from "module-name";
     import "module-name"
-
+    
+ (19) 先事件捕获从windows > document 往下级直到 特定的事件节点，然后进行事件处理，再事件冒泡，从特定节点往上级，这个完整的过程
+ 
