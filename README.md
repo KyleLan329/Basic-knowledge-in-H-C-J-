@@ -293,7 +293,51 @@ all（）方法和apply（）方法的作用相同，他们的区别在于接收
       IE下<s style=”top:expression(alert(1))”></s>  // 在ie 7下会连续弹出， IE5及其以后版本支持在CSS中使用expression，用来把CSS属性和Javascript表达式关联起来，这里的CSS属性可以是元素固有的属性，也可以是自定义属性。就是说CSS属性后面可以是一段Javascript表达式，CSS属性的值等于Javascript表达式计算的结果。 在表达式中可以直接引用元素自身的属性和方法，也可以使用其他浏览器对象。这个表达式就好像是在这个元素的一个成员函数中一样。参考资料 http://www.blueidea.com/tech/site/2006/3705.asp
     
       <div onclick=”alert(1)”></div>  // 不可以,因为div里没有内容，盒子的宽度为0所以点击不了
+ 
+（18）以下符合 ES6 写法的有：
 
+    A．	class Foo
+    {
+    	constructor() {return Object.create(null);}
+    }
+    Foo()
+    B．	var m=1;
+    export m;
+    export var firstName=’Michael’;
+    在A模块中export{readFile}后，在B模块中import readFile from ‘A’可以获取到readFil
 
+ 
+A、Fun() 把 class 当成方法来用？ var fun = new Func() 这样用就对了
+B、export 后面变量没加括号；
+D、import readFile 没加括号，是导入 default 的用法，但是前面不是 export 为 default
 
+参照 export 和 import 用法：
+1、https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/export
+2、https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
+
+    
+    export {name1,name2, …,nameN};
+    export {variable1asname1,variable2asname2, …,nameN};
+    export letname1,name2, …,nameN; // also var
+    export letname1= …,name2= …, …,nameN; // also var, const
+    
+    export expression;
+    export default expression;
+    export default function (…) { … } // also class, function*
+    export default function name1(…) { … } // also class, function*
+    export {name1as default, … };
+    
+    export * from …;
+    export {name1,name2, …,nameN} from …;
+    export {import1asname1,import2asname2, …,nameN} from …;
+    
+     import defaultMember from "module-name";
+    import * as name from "module-name";
+    import { member } from "module-name";
+    import { member as alias } from "module-name";
+    import { member1 , member2 } from "module-name";
+    import { member1 , member2 as alias2 , [...] } from "module-name";
+    import defaultMember, { member [ , [...] ] } from "module-name";
+    import defaultMember, * as name from "module-name";
+    import "module-name"
 
