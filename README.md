@@ -405,4 +405,10 @@ D、import readFile 没加括号，是导入 default 的用法，但是前面不
 
 （21）$.ajax()函数依赖服务器提供的信息来处理返回的数据。如果服务器报告说返回的数据是XML，那么返回的结果就可以用普通的XML方法或者jQuery的选择器来遍历。如果见得到其他类型，比如HTML，则数据就以文本形式来对待。
 通过dataType选项还可以指定其他不同数据处理方式。除了单纯的XML，还可以指定 html、json、jsonp、script或者text。
+
+（22）Navagator：提供有关浏览器的信息
+Window：Window对象处于对象层次的最顶层，它提供了处理Navagator窗口的方法和属性
+Location：提供了与当前打开的URL一起工作的方法和属性，是一个静态的对象
+History：提供了与历史清单有关的信息
+Document：包含与文档元素一起工作的对象，它将这些元素封装起来供编程人员使用
  
