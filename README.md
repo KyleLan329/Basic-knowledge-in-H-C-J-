@@ -433,6 +433,16 @@ b、如果一个是字符串，一个是数值，把字符串转换成数值再�
 c、如果任一值是 true，把它转换成 1 再比较；如果任一值是 false，把它转换成 0 再比较。 
 d、任何其他组合，都[不相等]。
 
+(24)
+typeof Symbol()    //"symbol"
+typeof Number()    //"number"
+typeof String()    //"string"
+typeof Function()    //"function"
+typeof Object()    //"object"
+typeof Boolean()    //"boolean"
+typeof null    //"object"
+typeof undefined    //"undefined"
+
 
 ## Network
 
