@@ -443,6 +443,9 @@ typeof Boolean()    //"boolean"
 typeof null    //"object"
 typeof undefined    //"undefined"
 
+(25)
+与浏览列表有关的对象:history screen location Navigator
+
 
 ## Network
 
